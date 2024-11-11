@@ -7,27 +7,27 @@ import { Observable } from 'rxjs';
 })
 export class LojaService {
 
-  private apiUrl = 'URL_DA_API_AQUI'; 
+  private apiUrl = 'http://localhost:3000'; 
 
   constructor(private http: HttpClient) { }
 
   getProfile(): Observable<any> {
-    return this.http.get<any>('${this.apiUrl}/profile');
+    return this.http.get<any>(`${this.apiUrl}/profile`);
   }
 
   getPlatforms(): Observable<any> {
-    return this.http.get<any>('${this.apiUrl}/platforms');
+    return this.http.get<any>(`${this.apiUrl}/platforms`);
   }
 
   getGenres(): Observable<any> {
-    return this.http.get<any>('${this.apiUrl}/genres');
+    return this.http.get<any>(`${this.apiUrl}/genres`);
   }
 
   getGamesList(): Observable<any> {
-    return this.http.get<any>('${this.apiUrl}/gamesList');
+    return this.http.get<any>(`${this.apiUrl}/gamesList`);
   }
 
   getGameDetails(gameId: string): Observable<any> {
-    return this.http.get<any>('${this.apiUrl}/gameDetails/${gameId}');
+    return this.http.get<any>(`${this.apiUrl}/gameDetails/${gameId}`);
   }
 }
