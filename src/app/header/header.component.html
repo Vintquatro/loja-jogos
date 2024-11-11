@@ -1,11 +1,24 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
-    <!-- Title on the Left -->
-    <a class="navbar-brand" href="#">GameTrove</a>
+    <!-- Title and Links on the Left -->
+    <a class="navbar-brand me-3" href="#">GameTrove</a>
 
-    <!-- Centered Links -->
-    <div class="collapse navbar-collapse justify-content-right">
-      <ul class="navbar-nav">
+    <!-- Toggler button for responsive design -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarContent"
+      aria-controls="navbarContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar Links on the Left -->
+    <div class="collapse navbar-collapse" id="navbarContent">
+      <ul class="navbar-nav me-auto">
         <li class="nav-item">
           <a class="nav-link" href="#">Home</a>
         </li>
@@ -13,21 +26,28 @@
           <a class="nav-link" href="#">My Games</a>
         </li>
       </ul>
-    </div>
 
-   
-    <div class="d-flex align-items-center">
-      <img
-        *ngIf="userProfile$ | async as userProfile"
-        [src]="userProfile.avatar"
-        alt="User Avatar"
-        class="rounded-circle"
-        width="30"
-        height="30"
-      />
-
-      <a class="ms-2" *ngIf="userProfile$ | async as userProfile" [routerLink]="['/detalhes-user', userProfile.id]">{{ userProfile.name }}</a>
-
+      <!-- User Profile on the Right -->
+      <div class="d-flex align-items-center">
+        <ng-container *ngIf="userProfile$ | async as userProfile">
+          <ng-container *ngIf="userProfile.avatar; else initialsAvatar">
+            <img
+              [src]="userProfile.avatar"
+              alt="User Avatar"
+              class="rounded-circle"
+              width="30"
+              height="30"
+            />
+          </ng-container>
+          <ng-template #initialsAvatar>
+            <div class="initials-avatar" [style.backgroundColor]="getBackgroundColor(userProfile.name)">
+              {{ getInitials(userProfile.name) }}
+            </div>
+          </ng-template>
+          <a class="ms-2" [routerLink]="['/detalhes-user', userProfile.id]">{{ userProfile.name }}</a>
+        </ng-container>
+      </div>
     </div>
   </div>
 </nav>
+

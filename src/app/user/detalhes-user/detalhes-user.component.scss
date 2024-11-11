@@ -54,4 +54,26 @@
     color: #0056b3;
   }
   
+
+  .initials-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 150px;
+  font-size: 2em;
+  color: white;
+  border-radius: 50%;
+  text-transform: uppercase;
+}
+
+
+.user-avatar{
+  display: block;
+  max-width: fit-content;
+margin-left: auto;
+margin-right: auto;
+margin-bottom: auto;
+margin-top: auto;
+}
   

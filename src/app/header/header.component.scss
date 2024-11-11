@@ -6,3 +6,16 @@
     margin-right: 0.5rem;
   }
   
+  .initials-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    font-size: 0.8em;
+    color: white;
+    background-color: #007bff; /* Default color */
+    border-radius: 50%;
+    text-transform: uppercase;
+  }
+  

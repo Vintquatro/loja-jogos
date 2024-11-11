@@ -21,4 +21,17 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.userProfile$ = this.lojaService.getProfile(); 
   }
+
+  getInitials(name: string): string {
+    if (!name) return '';
+    const nameParts = name.split(' ');
+    const initials = nameParts.map(part => part[0]).join('');
+    return initials.toUpperCase();
+  }
+  
+  getBackgroundColor(name: string): string {
+    return '#007bff'; 
+  }
+  
+
 }
