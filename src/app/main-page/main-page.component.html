@@ -1,4 +1,4 @@
-<div class="container mt-6">
+<div class="container">
     <div *ngIf="loading" class="d-flex justify-content-center align-items-center">
       <div class="spinner-border text-primary" role="status">
         <span class="visually-hidden">Loading...</span>
@@ -20,9 +20,12 @@
           </div>
   
           <div class="card-overlay rounded-1">
-            <h6>{{ game.shortDescription }}</h6>
+            <h5><strong>{{ game.title }} </strong></h5>
+            <h6 class="mb-3">{{ game.shortDescription }}</h6>
+
             <p><strong>Publisher:</strong> {{ game.publisher }}</p>
             <p><strong>Developer:</strong> {{ game.developer }}</p>
+            <p><strong>Genre:</strong> {{ game.genre }}</p>
             <p><strong>Release Date:</strong> {{ game.releaseDate | date }}</p>
           </div>
         </div>
