@@ -8,7 +8,15 @@
           </div>
           <div class="card-body text-center">
             <!-- User Avatar -->
-            <img [src]="userProfile?.avatar" alt="User Avatar" class="rounded-circle mb-3" width="150" height="150">
+            <div class="user-avatar">
+              
+              <img *ngIf="userProfile?.avatar; else initials" [src]="userProfile.avatar" alt="User Avatar" class="rounded-circle mb-3" width="150" height="150">
+              <ng-template #initials>
+                <div class="initials-avatar" [style.backgroundColor]="getBackgroundColor(userProfile?.name)">
+                  {{ getInitials(userProfile?.name) }}
+                </div>
+              </ng-template>
+            </div>
   
             <!-- User Name -->
             <h4 class="mb-2">{{ userProfile?.name }}</h4>

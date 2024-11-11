@@ -44,5 +44,19 @@ export class DetalhesUserComponent implements OnInit {
   editProfile() {
     this.router.navigate([`/edit-profile/${this.userProfile.id}`]);
   }
+
+
+  getInitials(name: string): string {
+    if (!name) return '';
+    const nameParts = name.split(' ');
+    const initials = nameParts.map(part => part[0]).join('');
+    return initials.toUpperCase();
+  }
+  
+  getBackgroundColor(name: string): string {
+    // Generate a color based on the user's name or use a default color
+    return '#007bff'; // Or any color logic you'd prefer
+  }
+  
 }
 
