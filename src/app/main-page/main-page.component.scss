@@ -1,0 +1,38 @@
+.game-card {
+    position: relative;
+    transition: all 0.3s ease; 
+    cursor: pointer;
+  }
+  
+  .game-card img {
+    transition: filter 0.3s ease, opacity 0.3s ease; 
+  }
+  
+  .card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); 
+    color: white;
+    padding: 10px;
+    overflow-y: auto;
+    z-index: 1;
+    opacity: 0; 
+    transition: opacity 0.3s ease;
+  }
+  
+
+  .game-card:hover .card-overlay {
+    opacity: 0.9;
+  }
+  
+  .game-card:hover img {
+    opacity: 0.1; 
+    filter: brightness(0.5);
+  }
+  
+  .card-body {
+    z-index: 2;
+  }
