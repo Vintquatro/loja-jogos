@@ -1,0 +1,39 @@
+.zoom-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.zoom-modal-content {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.zoomed-img {
+    max-width: 90%;
+    max-height: 90%;
+    transition: transform 0.3s ease;
+}
+
+.zoom-thumbnail {
+    transition: transform 0.3s ease;
+}
+
+.zoom-thumbnail:hover {
+    transform: scale(1.1);
+}
+
+.thumbnail {
+    padding: 30px;
+}

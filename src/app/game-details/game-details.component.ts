@@ -15,6 +15,8 @@ import { of } from 'rxjs';  // Import 'of' to handle errors
 export class GameDetailsComponent implements OnInit {
   gameDetails: GameDetails | null = null;
   errorMessage: string | null = null;
+  zoomedImage: string | null = null;
+  isZoomed = false;
 
   constructor(
     private gameService: LojaService,
@@ -39,5 +41,14 @@ export class GameDetailsComponent implements OnInit {
         this.errorMessage = 'Game not found. Please check the game ID and try again.';
       }
     });
+  }
+
+  zoomImage(image: string): void {
+    this.zoomedImage = image;
+    this.isZoomed = true;
+  }
+
+  closeZoom(): void {
+    this.isZoomed = false;
   }
 }

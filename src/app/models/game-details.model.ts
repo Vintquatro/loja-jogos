@@ -12,7 +12,7 @@ export interface GameDetails {
     developer: string;
     releaseDate: string;
     freetogameProfileUrl: string;
-    minimumSystemRequirements?: {
+    minimumSystemRequirements: {
         os: string;
         processor: string;
         memory: string;

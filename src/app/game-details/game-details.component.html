@@ -1,63 +1,67 @@
-<div *ngIf="gameDetails" class="container my-4">
+<div class="container my-4">
     <!-- Error Message -->
     <div *ngIf="errorMessage" class="alert alert-danger">
         {{ errorMessage }}
     </div>
 
-    <!-- Details -->
-    <div class="row">
+    <!-- Game Details Section -->
+    <div *ngIf="gameDetails" class="row game-details">
+        <!-- Left Side - Game Thumbnail, Title, Status, Publisher, Developer, Release Date -->
         <div class="col-md-6">
-            <!-- Thumbnail -->
-            <div class="text-center mb-4">
-                <img [src]="gameDetails.thumbnail" [alt]="gameDetails.title" class="img-fluid rounded" />
+            <div class="game-thumbnail thumbnail">
+                <img [src]="gameDetails.thumbnail" [alt]="gameDetails.title" class="img-fluid rounded" style="max-height: 250px; object-fit: contain;" />
             </div>
-
-            <!-- Information -->
             <h2>{{ gameDetails.title }}</h2>
+            <p></p>
             <p><strong>Status:</strong> {{ gameDetails.status }}</p>
             <p><strong>Publisher:</strong> {{ gameDetails.publisher }}</p>
             <p><strong>Developer:</strong> {{ gameDetails.developer }}</p>
             <p><strong>Release Date:</strong> {{ gameDetails.releaseDate | date }}</p>
+
+            <!-- Game URL Button - Left Side -->
+            <div class="text-start my-3">
+                <a [href]="gameDetails.gameUrl" target="_blank" class="btn btn-primary">Play Game</a>
+            </div>
         </div>
 
+        <!-- Right Side - Description and Screenshots -->
         <div class="col-md-6">
-
-            <!-- Description -->
             <div class="my-4">
                 <h3>Description</h3>
                 <p>{{ gameDetails.description }}</p>
             </div>
 
-            <!-- Screenshots -->
             <div *ngIf="gameDetails.screenshots?.length" class="my-4">
                 <h3>Screenshots</h3>
                 <div class="row">
                     <div *ngFor="let screenshot of gameDetails.screenshots" class="col-md-4 mb-3">
-                        <img [src]="screenshot.image" [alt]="'Screenshot ' + screenshot.id" class="img-fluid rounded" />
+                        <img [src]="screenshot.image" [alt]="'Screenshot ' + screenshot.id"
+                            class="img-fluid rounded zoom-thumbnail" (click)="zoomImage(screenshot.image)" />
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- URL -->
-    <div *ngIf="gameDetails" class="text-center my-3">
-        <a [href]="gameDetails.gameUrl" target="_blank" class="btn btn-primary">Play Game</a>
-    </div>
-
     <!-- Minimum System Requirements -->
-    <div *ngIf="gameDetails.minimumSystemRequirements" class="my-4">
+    <div *ngIf="gameDetails?.minimumSystemRequirements" class="my-4">
         <h3>Minimum System Requirements</h3>
         <ul class="list-group">
-            <li class="list-group-item"><strong>OS:</strong> {{ gameDetails.minimumSystemRequirements?.os }}</li>
-            <li class="list-group-item"><strong>Processor:</strong> {{ gameDetails.minimumSystemRequirements?.processor
+            <li class="list-group-item"><strong>Processor:</strong> {{ gameDetails?.minimumSystemRequirements?.processor
                 }}</li>
-            <li class="list-group-item"><strong>Memory:</strong> {{ gameDetails.minimumSystemRequirements?.memory }}
+            <li class="list-group-item"><strong>Memory:</strong> {{ gameDetails?.minimumSystemRequirements?.memory }}
             </li>
-            <li class="list-group-item"><strong>Graphics:</strong> {{ gameDetails.minimumSystemRequirements?.graphics }}
-            </li>
-            <li class="list-group-item"><strong>Storage:</strong> {{ gameDetails.minimumSystemRequirements?.storage }}
+            <li class="list-group-item"><strong>Graphics:</strong> {{ gameDetails?.minimumSystemRequirements?.graphics
+                }}</li>
+            <li class="list-group-item"><strong>Storage:</strong> {{ gameDetails?.minimumSystemRequirements?.storage }}
             </li>
         </ul>
+    </div>
+</div>
+
+<!-- Zoomed Image Modal -->
+<div *ngIf="isZoomed" class="zoom-modal" (click)="closeZoom()">
+    <div class="zoom-modal-content">
+        <img [src]="zoomedImage" class="zoomed-img" />
     </div>
 </div>
