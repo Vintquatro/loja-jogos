@@ -1,0 +1,43 @@
+<div class="container mt-4">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6">
+        <!-- Edit Profile Card -->
+        <div class="card shadow-lg border-0">
+          <div class="card-header text-center">
+            <h3 class="card-title mb-0">Edit Profile</h3>
+          </div>
+          <div class="card-body">
+            <!-- User Avatar -->
+            <div class="mb-3 text-center">
+              <img [src]="userProfile?.avatar" alt="User Avatar" class="rounded-circle mb-3" width="150" height="150">
+              <input [(ngModel)]="userProfile.avatar" class="form-control" placeholder="Change Avatar URL">
+            </div>
+  
+            <!-- User Name -->
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input [(ngModel)]="userProfile.name" id="name" class="form-control" placeholder="Enter your name">
+            </div>
+  
+            <!-- User Email -->
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input [(ngModel)]="userProfile.email" id="email" class="form-control" placeholder="Enter your email">
+            </div>
+  
+            <!-- User Password -->
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input [(ngModel)]="userProfile.password" id="password" type="password" class="form-control" placeholder="Enter your password">
+            </div>
+  
+            <!-- Save Button -->
+            <div class="form-group text-center">
+              <button class="btn btn-success" (click)="onSave()">Save Changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

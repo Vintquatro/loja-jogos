@@ -15,6 +15,11 @@ export class LojaService {
     return this.http.get<any>(`${this.apiUrl}/profile`);
   }
 
+
+  updateProfile(userProfile: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/profile`, userProfile);
+  }
+
   getPlatforms(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/platforms`);
   }
@@ -30,4 +35,6 @@ export class LojaService {
   getGameDetails(gameId: string): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/gameDetails/${gameId}`);
   }
+
+
 }
