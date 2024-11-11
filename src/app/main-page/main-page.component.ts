@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LojaService } from '../services/loja.service';
 import { CommonModule } from '@angular/common';
-import { Game } from '../model/game' 
+import { Game } from '../models/game' 
 import { RouterLink } from '@angular/router';
 
 @Component({
