@@ -1,34 +1,45 @@
 {
   "profile": {
     "id": "06c2",
-    "name": "Zé Povinho",
-    "email": "zpovinho@mail.pt",
-    "password": "123456",
-    "avatar": "https://avatars.steamstatic.com/b32358b1a0f188ff07656a0c265b5af916224e96_full.jpg",
+    "name": "Zé Povinha",
+    "email": "zovinho@mail.ptaa",
+    "password": "qwerty",
+    "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQx_DVDju34ygSyxCFLiCiat_DQoyUusJHXdw&s",
     "lists": [
       {
         "id": "emif",
         "name": "Play Later",
-        "gamesIds": ["12", "340", "523"]
+        "gamesIds": [
+          "12",
+          "340",
+          "523"
+        ]
       },
       {
         "id": "qepb",
         "name": "Currently Playing",
-        "gamesIds": ["582", "11"]
+        "gamesIds": [
+          "582",
+          "11"
+        ]
       },
       {
         "id": "9ou3",
         "name": "Played",
-        "gamesIds": ["511"]
+        "gamesIds": [
+          "511"
+        ]
       },
       {
         "id": "gypq",
         "name": "Completed",
-        "gamesIds": ["522", "508"]
+        "gamesIds": [
+          "522",
+          "508"
+        ]
       }
     ]
   },
-
   "platforms": [
     {
       "id": "4e6c",
@@ -43,7 +54,6 @@
       "name": "Playstation 5"
     }
   ],
-
   "genres": [
     {
       "id": "8dbf",
@@ -82,7 +92,6 @@
       "name": "Card Games"
     }
   ],
-
   "gamesList": [
     {
       "id": "582",
@@ -345,7 +354,6 @@
       "freetogameProfileUrl": "https://www.freetogame.com/war-thunder"
     }
   ],
-
   "gameDetails": [
     {
       "id": "582",
