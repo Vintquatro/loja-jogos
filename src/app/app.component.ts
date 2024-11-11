@@ -7,7 +7,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, RouterModule, MainPageComponent, NotFoundComponent],
+  imports: [RouterOutlet, HeaderComponent, RouterModule, MainPageComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
