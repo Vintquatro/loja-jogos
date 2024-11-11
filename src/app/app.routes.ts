@@ -8,5 +8,5 @@ export const routes: Routes = [
 { path: 'detalhes-user/:id', title: 'Meu Perfil', component: DetalhesUserComponent },
 { path: '', title: 'Game Trove' , component: MainPageComponent }, 
 { path: 'game/:id', title: 'Game Trove' ,component: GameDetailsComponent },
-{ path: 'f', component: NotFoundComponent }
+{ path: '**', component: NotFoundComponent }
 ];
