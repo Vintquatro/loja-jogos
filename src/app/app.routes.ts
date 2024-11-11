@@ -11,6 +11,6 @@ export const routes: Routes = [
 {path: 'detalhes-user/:id',component: DetalhesUserComponent },
 {path: 'edit-profile/:id', component: EditProfileComponent },
 
-{ path: 'f', component: NotFoundComponent }
+{ path: '**', component: NotFoundComponent }
 
 ];
