@@ -23,10 +23,6 @@ export class MainPageComponent implements OnInit {
   constructor(private lojaService: LojaService) { }
 
   ngOnInit(): void {
-    this.loadGames();
-  }
-
-  loadGames(): void {
     this.lojaService.getGamesList().subscribe({
       next: (data) => {
         this.gamesList = data;
