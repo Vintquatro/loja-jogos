@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LojaService } from '../services/loja.service';
-import { Observable } from 'rxjs';  // You need to import Observable
+import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 

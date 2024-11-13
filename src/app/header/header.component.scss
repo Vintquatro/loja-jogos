@@ -18,4 +18,10 @@
     border-radius: 50%;
     text-transform: uppercase;
   }
-  
+
+  @media (max-width: 768px) {
+    .navbar {
+      margin-left: 0.5rem;
+      margin-right: 0.5rem;
+    }
+  }
