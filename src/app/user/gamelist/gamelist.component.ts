@@ -2,16 +2,22 @@ import { Component, OnInit } from '@angular/core';
 import { LojaService } from '../../services/loja.service';
 import { CommonModule } from '@angular/common';  // Import CommonModule
 import { RouterModule } from '@angular/router';  // Import RouterModule for routing
+import { Game } from '../../models/game';
 
 @Component({
   selector: 'app-gamelist',
   standalone: true,
-  imports: [CommonModule, RouterModule],  // Add CommonModule here
+  imports: [CommonModule, RouterModule],
   templateUrl: './gamelist.component.html',
   styleUrls: ['./gamelist.component.scss']
 })
 export class GamelistComponent implements OnInit {
   userProfile: any = {}; 
+  gamesList: Game[] = []; 
+  gamesMap: { [key: string]: Game } = {}; // Map for fast lookup with Game type
+
+  // Store the pending move for confirmation
+  pendingMove: { gameId: string, targetListId: string } | null = null;
 
   constructor(private lojaService: LojaService) {}
 
@@ -20,9 +26,24 @@ export class GamelistComponent implements OnInit {
     this.lojaService.getProfile().subscribe(
       (data) => {
         this.userProfile = data;
+        console.log(data);
       },
       (error) => {
         console.error('Error fetching user data:', error);
+      }
+    );
+
+    // Fetch all games and create a lookup map with Game type
+    this.lojaService.getGamesList().subscribe(
+      (games) => {
+        this.gamesList = games;
+        this.gamesMap = games.reduce((map, game: Game) => {
+          map[game.id] = game;
+          return map;
+        }, {} as { [key: string]: Game });
+      },
+      (error) => {
+        console.error('Error fetching games list:', error);
       }
     );
   }
@@ -33,22 +54,32 @@ export class GamelistComponent implements OnInit {
     this.updateProfile(); // Update profile after removing the game
   }
 
-  // Move a game to another list
-  moveToAnotherList(gameId: string, currentList: any): void {
-    // Prompt user to select another list (you can use a modal or dropdown here)
-    const newListId = prompt('Enter the list ID to move the game to:');
+  // Track the selected game for moving
+  onListChange(gameId: string, event: Event): void {
+    const selectElement = event.target as HTMLSelectElement;
+    const targetListId = selectElement.value;
 
-    if (newListId && this.userProfile.lists.find((list: any) => list.id === newListId)) {
-      // Remove game from current list
-      currentList.gamesIds = currentList.gamesIds.filter((id: string) => id !== gameId);
-      
-      // Add game to the new list
-      const newList = this.userProfile.lists.find((list: any) => list.id === newListId);
-      newList.gamesIds.push(gameId);
-      
-      this.updateProfile(); // Update profile after moving the game
-    } else {
-      alert('Invalid list ID!');
+    // Set the pending move
+    this.pendingMove = { gameId, targetListId };
+  }
+
+  // Confirm the move action
+  confirmMove(gameId: string): void {
+    if (this.pendingMove) {
+      const { targetListId } = this.pendingMove;
+      const targetList = this.userProfile.lists.find((list: any) => list.id === targetListId);
+      const currentList = this.userProfile.lists.find((list: any) => list.gamesIds.includes(gameId));
+
+      if (targetList && currentList) {
+        // Remove game from the current list
+        currentList.gamesIds = currentList.gamesIds.filter((id: string) => id !== gameId);
+        // Add game to the target list
+        targetList.gamesIds.push(gameId);
+        
+        // Clear pending move and update the profile
+        this.pendingMove = null;
+        this.updateProfile();
+      }
     }
   }
 
@@ -62,5 +93,15 @@ export class GamelistComponent implements OnInit {
         console.error('Error updating profile:', error);
       }
     );
+  }
+
+  // Retrieve game details from the map by ID
+  getGameDetails(gameId: string): Game | undefined {
+    return this.gamesMap[gameId];
+  }
+
+  // Check if the game is pending a move
+  isPendingMove(gameId: string): boolean {
+    return this.pendingMove?.gameId === gameId;
   }
 }
