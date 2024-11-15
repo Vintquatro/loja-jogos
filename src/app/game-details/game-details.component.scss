@@ -41,14 +41,37 @@
     width: 100%;
 }
 
+.game-right {
+    padding-left: 3%;
+    padding-top: 0px;
+}
+
+.screenshots-container {
+    position: relative;
+    bottom: -40px;
+}
+
 .game-left {
     border: 1px solid #333;
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
 }
 
-.game-right {
-    padding-left: 3%;
-    padding-top: 0px;
+.game-left .btn-primary {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 30px);
+}
+
+.game-left .form-select {
+    position: absolute;
+    bottom: 2%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 30px);
+    text-align: center;
 }

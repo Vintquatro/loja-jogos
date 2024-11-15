@@ -16,18 +16,29 @@
             <p><strong>Developer:</strong> {{ gameDetails.developer }}</p>
             <p><strong>Release Date:</strong> {{ gameDetails.releaseDate | date }}</p>
 
-            <a [href]="gameDetails.gameUrl" target="_blank" class="btn btn-primary">Play Now!</a>
+            <div class="bottom-controls">
+                <a [href]="gameDetails.gameUrl" target="_blank" class="btn btn-primary">Play Now!</a>
+
+                <!-- Move to List -->
+                <div class="my-4">
+                    <select id="moveToList" class="form-select" (change)="onListChange($event)" [value]="currentListId">
+                        <option [value]="''" disabled selected>Move to...</option>
+                        <option *ngFor="let list of userProfile?.lists" [value]="list.id">{{ list.name }}</option>
+                    </select>
+                </div>
+            </div>
         </div>
+
 
         <!-- Right -->
         <div class="col-md-8 game-right">
             <h3>Description</h3>
             <p>{{ gameDetails.description }}</p>
-            <!-- Screenshots -->
-            <div *ngIf="gameDetails?.screenshots?.length" class="my-4">
+
+            <div *ngIf="gameDetails?.screenshots?.length" class="my-4 screenshots-container">
                 <h3>Screenshots</h3>
                 <div class="row">
-                    <div *ngFor="let screenshot of gameDetails?.screenshots" class="col-md-4 mb-3">
+                    <div *ngFor="let screenshot of gameDetails?.screenshots" class="col-md-4 mb-3 screenshot-item">
                         <img [src]="screenshot.image" [alt]="'Screenshot ' + screenshot.id"
                             class="img-fluid rounded zoom-thumbnail" (click)="zoomImage(screenshot.image)" />
                     </div>

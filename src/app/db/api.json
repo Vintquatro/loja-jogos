@@ -19,6 +19,7 @@
         "name": "Currently Playing",
         "gamesIds": [
           "11",
+          "582",
           "508"
         ]
       },
@@ -27,7 +28,6 @@
         "name": "Played",
         "gamesIds": [
           "511",
-          "582",
           "522"
         ]
       },
