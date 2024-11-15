@@ -4,33 +4,30 @@
         {{ errorMessage }}
     </div>
 
+    <br>
     <div *ngIf="gameDetails" class="row game-details">
 
         <!-- Left -->
-        <div class="col-md-6">
+        <div class="col-md-4 game-left">
             <img [src]="gameDetails.thumbnail" [alt]="gameDetails.title" class="img-fluid rounded thumbnail" />
-            <p></p>
-            <h2>{{ gameDetails.title }}</h2>
-            <p></p>
+            <h2><strong>{{ gameDetails.title }}</strong></h2>
             <p><strong>Status:</strong> {{ gameDetails.status }}</p>
             <p><strong>Publisher:</strong> {{ gameDetails.publisher }}</p>
             <p><strong>Developer:</strong> {{ gameDetails.developer }}</p>
             <p><strong>Release Date:</strong> {{ gameDetails.releaseDate | date }}</p>
 
-            <div class="text-start my-3">
-                <a [href]="gameDetails.gameUrl" target="_blank" class="btn btn-primary">Play Game</a>
-            </div>
+            <a [href]="gameDetails.gameUrl" target="_blank" class="btn btn-primary">Play Now!</a>
         </div>
 
         <!-- Right -->
-        <div class="col-md-6">
+        <div class="col-md-8 game-right">
             <h3>Description</h3>
             <p>{{ gameDetails.description }}</p>
-
-            <div *ngIf="gameDetails.screenshots?.length" class="my-4">
+            <!-- Screenshots -->
+            <div *ngIf="gameDetails?.screenshots?.length" class="my-4">
                 <h3>Screenshots</h3>
                 <div class="row">
-                    <div *ngFor="let screenshot of gameDetails.screenshots" class="col-md-4 mb-3">
+                    <div *ngFor="let screenshot of gameDetails?.screenshots" class="col-md-4 mb-3">
                         <img [src]="screenshot.image" [alt]="'Screenshot ' + screenshot.id"
                             class="img-fluid rounded zoom-thumbnail" (click)="zoomImage(screenshot.image)" />
                     </div>
@@ -50,9 +47,9 @@
         </div>
     </div>
 
-
     <div *ngIf="isZoomed" class="zoom-modal" (click)="closeZoom()">
         <div class="zoom-modal-content">
             <img [src]="zoomedImage" class="zoomed-img" />
         </div>
     </div>
+</div>

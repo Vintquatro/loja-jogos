@@ -18,24 +18,23 @@
         "id": "qepb",
         "name": "Currently Playing",
         "gamesIds": [
-          "582",
-          "11"
+          "11",
+          "508"
         ]
       },
       {
         "id": "9ou3",
         "name": "Played",
         "gamesIds": [
-          "511"
+          "511",
+          "582",
+          "522"
         ]
       },
       {
         "id": "gypq",
         "name": "Completed",
-        "gamesIds": [
-          "522",
-          "508"
-        ]
+        "gamesIds": []
       }
     ]
   },
