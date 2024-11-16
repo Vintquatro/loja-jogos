@@ -1,13 +1,11 @@
 <div class="container mt-4">
     <div class="row justify-content-center">
       <div class="col-md-8 col-lg-6">
-        <!-- User Profile Card -->
         <div class="card shadow-lg border-0">
           <div class="card-header text-center">
             <h3 class="card-title mb-0">User Profile</h3>
           </div>
           <div class="card-body text-center">
-            <!-- User Avatar -->
             <div class="user-avatar">
               
               <img *ngIf="userProfile?.avatar; else initials" [src]="userProfile.avatar" alt="User Avatar" class="rounded-circle mb-3" width="150" height="150">
@@ -18,16 +16,9 @@
               </ng-template>
             </div>
   
-            <!-- User Name -->
             <h4 class="mb-2">{{ userProfile?.name }}</h4>
-  
-            <!-- User Email -->
             <p class="text-muted">{{ userProfile?.email }}</p>
-  
-            <!-- User ID -->
             <p class="text-muted">User ID: <span class="fw-bold">{{ userProfile?.id }}</span></p>
-  
-            <!-- User Password (toggle visibility) -->
             <p class="text-muted">
               Password: 
               <span class="fw-bold">

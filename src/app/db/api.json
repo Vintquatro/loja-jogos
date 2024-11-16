@@ -10,7 +10,6 @@
         "id": "emif",
         "name": "Play Later",
         "gamesIds": [
-          "12",
           "340"
         ]
       },
@@ -19,8 +18,8 @@
         "name": "Currently Playing",
         "gamesIds": [
           "11",
-          "582",
-          "508"
+          "508",
+          "12"
         ]
       },
       {
@@ -34,7 +33,9 @@
       {
         "id": "gypq",
         "name": "Completed",
-        "gamesIds": []
+        "gamesIds": [
+          "582"
+        ]
       }
     ]
   },

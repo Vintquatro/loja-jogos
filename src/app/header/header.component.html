@@ -1,9 +1,7 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg" [ngClass]="{'navbar-light': !isDarkTheme, 'navbar-dark': isDarkTheme}">
   <div class="container-fluid mx-2">
-    <!-- Title and Links on the Left -->
-    <a class="navbar-brand me-3" href="#">GameTrove</a>
+    <a class="navbar-brand me-3" [routerLink]="'/'">GameTrove</a>
 
-    <!-- Toggler button for responsive design -->
     <button
       class="navbar-toggler"
       type="button"
@@ -16,7 +14,6 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <!-- Navbar Links on the Left -->
     <div class="collapse navbar-collapse" id="navbarContent">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
@@ -27,7 +24,14 @@
         </li>
       </ul>
 
-      <!-- User Profile on the Right -->
+      <div class="text-center">
+        <i class="fas m-3" 
+        [ngClass]="isDarkTheme ? 'fa-sun text-white' : 'fa-moon text-secondary'" 
+        (click)="toggleDarkTheme()" 
+        style="cursor: pointer; font-size: 1.5rem; margin-left: 15px;">
+     </i>
+      </div>
+
       <div class="d-flex align-items-center">
         <ng-container *ngIf="userProfile$ | async as userProfile">
           <ng-container *ngIf="userProfile.avatar; else initialsAvatar">

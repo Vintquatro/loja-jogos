@@ -61,8 +61,7 @@ export class EditProfileComponent implements OnInit {
   }
   
   getBackgroundColor(name: string): string {
-    // Generate a color based on the user's name or use a default color
-    return '#007bff'; // Or any color logic you'd prefer
+    return '#007bff';
   }
   
 }

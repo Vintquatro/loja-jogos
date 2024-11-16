@@ -1,37 +1,29 @@
 <div class="container mt-5">
   <div class="row">
-    <!-- Loop through each list -->
     <div class="col-md-3 col-sm-6 mb-4" *ngFor="let list of userProfile.lists">
       <div class="card shadow-lg h-100 border-0 rounded-3 hover-card">
         <div class="card-header text-center bg-primary text-white">
           <h5 class="fw-bold">{{ list.name }}</h5>
         </div>
         <div class="card-body d-flex flex-column">
-          <!-- Loop through the games in the current list -->
           <ul class="list-group flex-grow-1">
             <li *ngFor="let gameId of list.gamesIds" class="list-group-item d-flex flex-column align-items-center border-0 mb-3">
-              <!-- Game Thumbnail (Hero Image) -->
               <div class="game-thumbnail-container mb-3">
                 <img [src]="getGameDetails(gameId)?.thumbnail" alt="{{ getGameDetails(gameId)?.title }}" class="game-thumbnail rounded-3" />
               </div>
 
-              <!-- Game Name and Button Group -->
               <div class="game-info w-100 text-center">
                 <span class="game-title">{{ getGameDetails(gameId)?.title }}</span>
                 <div class="button-group mt-3">
-                  <!-- Label for the dropdown -->
                   <label for="list-selector-{{ gameId }}" class="form-label">Move to:</label>
-                  <!-- Dropdown for list selection -->
                   <select id="list-selector-{{ gameId }}" (change)="onListChange(gameId, $event)" class="form-select form-select-sm me-2">
                     <option *ngFor="let targetList of userProfile.lists" [value]="targetList.id" [disabled]="targetList.id === list.id">
                       {{ targetList.name }}
                     </option>
                   </select>
                   
-                  <!-- Move confirmation button -->
                   <button *ngIf="isPendingMove(gameId)" class="btn btn-sm btn-warning mt-2" (click)="confirmMove(gameId)">Confirm Move</button>
 
-                  <!-- Remove game button -->
                   <button class="btn btn-sm btn-danger mt-2" (click)="removeGame(gameId, list)">Remove</button>
                 </div>
               </div>

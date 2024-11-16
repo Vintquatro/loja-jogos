@@ -11,14 +11,14 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./detalhes-user.component.scss'],
 })
 export class DetalhesUserComponent implements OnInit {
-  userId: string = '';  // Store the user ID
-  userProfile: any;     // Store the user data
-  showPassword: boolean = false; // Manage password visibility
+  userId: string = '';
+  userProfile: any;
+  showPassword: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
     private lojaService: LojaService,
-    private router: Router  // Inject Router to navigate programmatically
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -40,7 +40,6 @@ export class DetalhesUserComponent implements OnInit {
     this.showPassword = !this.showPassword;
   }
 
-  // Navigate to the EditProfileComponent when the button is clicked
   editProfile() {
     this.router.navigate([`/edit-profile/${this.userProfile.id}`]);
   }
@@ -54,8 +53,7 @@ export class DetalhesUserComponent implements OnInit {
   }
   
   getBackgroundColor(name: string): string {
-    // Generate a color based on the user's name or use a default color
-    return '#007bff'; // Or any color logic you'd prefer
+    return '#007bff';
   }
   
 }

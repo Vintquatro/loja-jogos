@@ -1,14 +1,11 @@
 <div class="container my-4">
-    <!-- Error Message -->
     <div *ngIf="errorMessage" class="alert alert-danger">
         {{ errorMessage }}
     </div>
 
     <br>
     <div *ngIf="gameDetails" class="row game-details">
-
-        <!-- Left -->
-        <div class="col-md-4 game-left">
+        <div class="col-md-4 game-left bg-white" id="game-details-card">
             <img [src]="gameDetails.thumbnail" [alt]="gameDetails.title" class="img-fluid rounded thumbnail" />
             <h2><strong>{{ gameDetails.title }}</strong></h2>
             <p><strong>Status:</strong> {{ gameDetails.status }}</p>
@@ -19,7 +16,6 @@
             <div class="bottom-controls">
                 <a [href]="gameDetails.gameUrl" target="_blank" class="btn btn-primary">Play Now!</a>
 
-                <!-- Move to List -->
                 <div class="my-4">
                     <select id="moveToList" class="form-select" (change)="onListChange($event)" [value]="currentListId">
                         <option [value]="''" disabled selected>Move to...</option>
@@ -29,8 +25,6 @@
             </div>
         </div>
 
-
-        <!-- Right -->
         <div class="col-md-8 game-right">
             <h3>Description</h3>
             <p>{{ gameDetails.description }}</p>
@@ -47,7 +41,6 @@
         </div>
     </div>
 
-    <!-- Minimum System Requirements -->
     <div *ngIf="gameDetails?.minimumSystemRequirements" class="my-4">
         <h3>Minimum System Requirements</h3>
         <div class="requirements">

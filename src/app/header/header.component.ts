@@ -14,6 +14,17 @@ import { RouterModule } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
+  isDarkTheme = false;
+
+  toggleDarkTheme() {
+    this.isDarkTheme = !this.isDarkTheme;
+    if (this.isDarkTheme) {
+      document.body.classList.add('dark-theme');
+    } else {
+      document.body.classList.remove('dark-theme');
+    }
+  }
+
   userProfile$: Observable<any> | undefined;  
 
   constructor(private lojaService: LojaService) {}
@@ -32,6 +43,4 @@ export class HeaderComponent implements OnInit {
   getBackgroundColor(name: string): string {
     return '#007bff'; 
   }
-  
-
 }

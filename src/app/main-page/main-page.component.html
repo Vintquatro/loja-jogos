@@ -19,9 +19,9 @@
     {{ error }}
   </div>
 
-  <div *ngIf="!loading && !error" class="row row-cols-1 row-cols-md-3 g-4">
+  <div *ngIf="!loading && !error" class="row row-cols-1 row-cols-md-3 g-4 rounded-1">
     <div *ngFor="let game of filteredGames" class="col">
-      <div class="card h-100 position-relative game-card rounded-1" [routerLink]="'/game/' + game.id">
+      <div class="card h-100 position-relative game-card" [routerLink]="'/game/' + game.id">
         <img [src]="game.thumbnail" class="card-img-top" [alt]="game.title">
   
         <div class="card-body">

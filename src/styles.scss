@@ -1,2 +1,29 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global styles */
+body {
+    --text-color: #222;
+    --bkg-color: #fff;
+    --btn-txt-color: white;
+    --card-border-color: #c1c1c1;
+}
+
+body.dark-theme {
+    --text-color: #eee;
+    --bkg-color: #252222;
+    --btn-txt-color: rgb(46, 43, 43);
+    --card-border-color: #000000;
+}
+
+body {
+    background: var(--bkg-color);
+}
+
+h1, p, h2, h3 {
+    color: var(--text-color);
+}
+
+.game-card {
+    border: 1px solid var(--card-border-color);
+    transition: border-color 0.3s ease;
+}
+
 

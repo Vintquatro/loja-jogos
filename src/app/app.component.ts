@@ -9,7 +9,7 @@ import { EditProfileComponent } from "./user/edit-profile/edit-profile.component
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, RouterModule, MainPageComponent, FormsModule, EditProfileComponent],
+  imports: [RouterOutlet, HeaderComponent, RouterModule, FormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
